@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "volumeInfo": {
+        "title": "Digital Filters",
+        "description": "Introductory text examines role of digital filtering in many applications, particularly computers. Focus on linear signal processing; some consideration of roundoff effects, Kalman filters. Only calculus, some statistics required.",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=SWTyj3q_WqUC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=SWTyj3q_WqUC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+      },
+    },
+    {
+      "volumeInfo": {
+        "title": "Being Digital",
+        "description": "One of the founding fathers of the information age discusses the impact of digital technology on the modern world, discussing such topics as multimedia, the effects of digital transmission on copyright, and virtual reality. 100,000 first printing. $100,000 ad/promo. Tour.",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=MPpSAAAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=MPpSAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+      },
+    },
+  ]
+}
