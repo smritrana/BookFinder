@@ -205,9 +205,10 @@
 			isa = PBXGroup;
 			children = (
 				455898FB29479D7C00825431 /* Info.plist */,
-				45DE5365294AF2B300F7860D /* Util */,
 				4558995E2949B3C000825431 /* Application */,
-				4558995F2949B3E100825431 /* Modules */,
+				45F5277029536D0700AD947C /* Presentation */,
+				455899622949B52D00825431 /* Data */,
+				455899612949B52700825431 /* Domain */,
 				4558993F294895C700825431 /* Networking */,
 				4558992029479F9300825431 /* Resource */,
 			);
@@ -270,17 +271,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		4558995A2949B2F600825431 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				455899652949B59A00825431 /* View */,
-				455899642949B57900825431 /* ViewController */,
-				455899632949B56D00825431 /* ViewModel */,
-				4558995B2949B30B00825431 /* Entities */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
 		4558995B2949B30B00825431 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,9 +291,8 @@
 		4558995F2949B3E100825431 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				4558994B29489C6E00825431 /* LoadModule.swift */,
+				45DE5365294AF2B300F7860D /* Util */,
 				458B5AF02952E65200CDD690 /* BookDetail */,
-				4558994929489BEF00825431 /* LoadContainer.swift */,
 				455899602949B48700825431 /* BookListModule */,
 			);
 			path = Modules;
@@ -312,9 +301,9 @@
 		455899602949B48700825431 /* BookListModule */ = {
 			isa = PBXGroup;
 			children = (
-				455899622949B52D00825431 /* Data */,
-				455899612949B52700825431 /* Domain */,
-				4558995A2949B2F600825431 /* Presentation */,
+				455899652949B59A00825431 /* View */,
+				455899642949B57900825431 /* ViewController */,
+				455899632949B56D00825431 /* ViewModel */,
 			);
 			path = BookListModule;
 			sourceTree = "<group>";
@@ -400,19 +389,11 @@
 		458B5AF02952E65200CDD690 /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
-				458B5AF22952E66900CDD690 /* Presentation */,
-			);
-			path = BookDetail;
-			sourceTree = "<group>";
-		};
-		458B5AF22952E66900CDD690 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
 				458B5B03295306B700CDD690 /* View */,
 				458B5AF42952E6A400CDD690 /* ViewController */,
 				458B5AF32952E69C00CDD690 /* ViewModel */,
 			);
-			path = Presentation;
+			path = BookDetail;
 			sourceTree = "<group>";
 		};
 		458B5AF32952E69C00CDD690 /* ViewModel */ = {
@@ -502,6 +483,17 @@
 				45EE6757294DFEC900EC0581 /* BookInfo.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		45F5277029536D0700AD947C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4558994B29489C6E00825431 /* LoadModule.swift */,
+				4558994929489BEF00825431 /* LoadContainer.swift */,
+				4558995F2949B3E100825431 /* Modules */,
+				4558995B2949B30B00825431 /* Entities */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		5C2A458F2E84285526B9DB28 /* Pods */ = {
