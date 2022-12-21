@@ -8,7 +8,7 @@
 import Foundation
 
 class Dynamic<T>:NSObject {
-    typealias Listener = (T) -> ()
+    typealias Listener = (T) -> Void
     var listener: Listener?
     
     func bind(_ listener: Listener?) {

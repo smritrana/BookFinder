@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookDataListDTO: Decodable {
+struct BookDataListDTO: Codable {
     let items: [Item]
 
     private enum CodingKeys: String, CodingKey {
@@ -32,15 +32,17 @@ struct Item: Codable {
 struct VolumeInfo: Codable {
     let title: String
     let subtitle: String?
+    let publisher, publishedDate, volumeInfoDescription: String?
     let imageLinks: ImageLinks
 
     enum CodingKeys: String, CodingKey {
-        case title, subtitle
+        case title, subtitle, publisher, publishedDate
+        case volumeInfoDescription = "description"
         case imageLinks
     }
 }
 
 // MARK: - ImageLinks
 struct ImageLinks: Codable {
-    let smallThumbnail, thumbnail: String
+    let smallThumbnail, thumbnail: String?
 }

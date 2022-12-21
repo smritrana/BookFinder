@@ -36,7 +36,7 @@ class URLRequestGeneratorTests: XCTestCase {
             XCTAssertEqual(urlRequest.httpMethod, HTTPMethod.get.rawValue)
             XCTAssertEqual(urlRequest.allHTTPHeaderFields, ["Content-Type":"application/json"])
             XCTAssertNil(urlRequest.httpBody)
-        } catch (_) {
+        } catch {
             XCTFail("Request Failure not expected")
         }
     }

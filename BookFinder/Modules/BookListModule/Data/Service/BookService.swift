@@ -6,7 +6,6 @@
 //
 import Foundation
 
-
 protocol BookServiceProtocol {
     func fetchBooksFromNetwork(_ searchItem: String, completion: @escaping (Result<BookDataListDTO, Error>) -> Void)
 }

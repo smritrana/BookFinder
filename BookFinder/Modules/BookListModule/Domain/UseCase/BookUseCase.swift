@@ -13,7 +13,6 @@ protocol BookUseCaseProtocol {
     func fetchBookList(_ searchItem: String, completion: @escaping DomainResponse)
 }
 
-
 class BookUseCase: BookUseCaseProtocol {
         
     private let respository: BookRepositoryProtocol

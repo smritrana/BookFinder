@@ -39,4 +39,17 @@ class BookListViewModelTests: XCTestCase {
         
         XCTAssertTrue(viewModel.bookInfo.count == 0)
     }
+
+    func test_getScreenName() {
+        XCTAssertNotNil(viewModel.getScreenName)
+        XCTAssertTrue(viewModel.getScreenName == "Book Finder")
+    }
+
+    func test_getAlertMessage() {
+        XCTAssertNotNil(viewModel.getAlertMessage)
+        XCTAssertNotNil(viewModel.getAlertMessage.title)
+        XCTAssertTrue(viewModel.getAlertMessage.title == "Alert!")
+        XCTAssertNotNil(viewModel.getAlertMessage.message)
+        XCTAssertTrue(viewModel.getAlertMessage.message == "No book available")
+    }
 }

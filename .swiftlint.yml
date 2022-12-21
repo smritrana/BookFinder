@@ -1,0 +1,25 @@
+disabled_rules:
+    - force_cast
+    - force_unwrapping
+    - identifier_name
+    - function_body_length
+    - force_try
+    - type_name
+    - trailing_whitespace
+    - colon
+    - empty_enum_arguments
+line_length:
+    warning: 400
+    error: 250
+    ignores_function_declarations: true
+    ignores_comments: true
+    ignores_urls: true
+file_length:
+    warning: 2000
+    error: 2200
+type_body_length:
+    warning: 600
+    error: 800
+
+excluded:
+  - Pods

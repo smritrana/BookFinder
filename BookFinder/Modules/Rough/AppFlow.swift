@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol AppFlowManagerProtocol {
     func moveToDetailViewController()
 }
@@ -41,6 +40,3 @@ class AppFlowManager: AppFlowManagerProtocol {
         }
     }
 }
-
-   
-

@@ -56,7 +56,7 @@ class NetworkManagerTests: XCTestCase {
         
         let request = NetworkRequest(path: "/BookInfo", method: .get)
         networkManger.request(request: request) { (result: Result<BookDataListDTO, Error>) in
-            switch result  {
+            switch result {
             case .success(_):
                 XCTFail("Success not expectd")
             case let .failure(error):
@@ -74,7 +74,7 @@ class NetworkManagerTests: XCTestCase {
         
         let request = NetworkRequest(path: "/BookInfo", method: .get)
         networkManger.request(request: request) { (result: Result<BookDataListDTO, Error>) in
-            switch result  {
+            switch result {
             case .success(_):
                 XCTFail("Success not expectd")
             case let .failure(error):
@@ -109,7 +109,7 @@ class NetworkManagerTests: XCTestCase {
         
         let request = NetworkRequest(path: "/BookInfo", method: .get)
         networkManger.request(request: request) { (result: Result<BookDataListDTO, Error>) in
-            switch result  {
+            switch result {
             case .success(_):
                 XCTFail("Success not expectd")
             case let .failure(error):

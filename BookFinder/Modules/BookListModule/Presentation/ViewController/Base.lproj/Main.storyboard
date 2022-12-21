@@ -66,6 +66,7 @@
                             <constraint firstItem="xcg-RI-3hg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="l9M-bY-GXH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="LRr-MF-KHg"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="hintLabel" destination="ef1-vx-CcJ" id="22K-98-86a"/>
@@ -76,7 +77,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-288" y="68"/>
+            <point key="canvasLocation" x="-213.04347826086959" y="-620.38043478260875"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="3pm-Jh-p7w">
+            <objects>
+                <viewController storyboardIdentifier="BookDetailViewController" title="Detail" id="eTz-Ps-pl9" customClass="BookDetailViewController" customModule="BookFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9sd-g5-7PA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-qY-z6a">
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="A4z-Gv-fwq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="A4z-Gv-fwq" firstAttribute="trailing" secondItem="hFR-qY-z6a" secondAttribute="trailing" id="f4y-x2-joX"/>
+                            <constraint firstItem="hFR-qY-z6a" firstAttribute="leading" secondItem="A4z-Gv-fwq" secondAttribute="leading" id="hqd-6N-a5f"/>
+                            <constraint firstItem="A4z-Gv-fwq" firstAttribute="bottom" secondItem="hFR-qY-z6a" secondAttribute="bottom" id="vXV-pH-DPG"/>
+                            <constraint firstItem="hFR-qY-z6a" firstAttribute="top" secondItem="A4z-Gv-fwq" secondAttribute="top" id="yiN-5b-M8q"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="hFR-qY-z6a" id="9LY-Zn-NVo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEv-5s-Bkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="502" y="-624"/>
         </scene>
     </scenes>
     <resources>

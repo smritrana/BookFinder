@@ -8,7 +8,6 @@
 import Foundation
 
 let defaultImageForBook = "iconSaveNotFilled"
-var searchItem = "Digital"
 
 struct Configuration {
     static let apiKey = "AIzaSyC4Jx3NbDIz1a2sWPsHNG_nnPZDwEnUK94"

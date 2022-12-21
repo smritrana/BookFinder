@@ -13,6 +13,7 @@ class BookServiceTests: XCTestCase {
 
     var bookService: BookServiceProtocol!
     var mockNetworkManager: MockNetworkManager!
+    private var searchItem = "Digital"
 
     override func setUp() {
         super.setUp()

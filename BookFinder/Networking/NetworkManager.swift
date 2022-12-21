@@ -35,7 +35,7 @@ class NetworkManager: NetworkManagerProtocol {
 
         let task = session.dataTask(with: urlRequest) { data, response, error in
 
-            if let _ = error {
+            if error != nil {
                 return completion(.failure(NetworkError.badRequest))
             }
             

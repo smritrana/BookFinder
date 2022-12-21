@@ -24,7 +24,10 @@ class TitleTableViewCell: UITableViewCell, ReusableViewNibLoading {
     func setDataToCell(_ bookInfoMapper: BookViewModelMapper) {
         self.title.text = bookInfoMapper.title
         self.subTitle.text = bookInfoMapper.subTitle
-        guard let imageURL = URL(string:bookInfoMapper.imageUrl.replacingOccurrences(of: "http", with: "https")) else { return }
-        self.bookImageView.af.setImage(withURL: imageURL, placeholderImage: UIImage(named: defaultImageForBook))
+
+        if let imageURL = getImageUrl(bookInfoMapper.smallImageUrl) {
+            self.bookImageView.af.setImage(withURL: imageURL,
+                                           placeholderImage: UIImage(named: defaultImageForBook))
+        }
     }
 }

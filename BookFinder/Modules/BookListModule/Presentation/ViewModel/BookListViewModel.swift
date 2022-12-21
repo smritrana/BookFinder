@@ -7,10 +7,14 @@
 
 import UIKit
 
+private struct ConstantValues {
+   static let listScreenName = "Book Finder"
+   static let alertTitle = "Alert!"
+   static let alertMessage = "No book available"
+}
+
 protocol BookListInputViewModel {
-    var bookInfo: [BookViewModelMapper] { get set }
     func fetchResults(_ searchedTerm: String)
-    var getScreenName: String {get}
 }
 
 protocol BookListOutputViewModel {
@@ -18,6 +22,11 @@ protocol BookListOutputViewModel {
     var showHint: Dynamic<Bool> { get }
     var showLoader: Dynamic<Bool> { get }
     var stopLoader: Dynamic<Bool> { get }
+    var showAlert: Dynamic<Bool> { get }
+
+    var getScreenName: String {get}
+    var getAlertMessage: (title: String, message: String) {get}
+    var bookInfo: [BookViewModelMapper] {get}
 
     func handleFailure()
 }
@@ -27,86 +36,114 @@ protocol BookListViewModelType {
     var input: BookListInputViewModel { get }
 }
 
-class BookListViewModel: NSObject {
+final class BookListViewModel: BookListViewModelType, BookListInputViewModel {
     var loadTable: Dynamic<Bool> = Dynamic(false)
     var showHint: Dynamic<Bool> = Dynamic(false)
     var showLoader: Dynamic<Bool> = Dynamic(false)
     var stopLoader: Dynamic<Bool> = Dynamic(false)
+    var showAlert: Dynamic<Bool> = Dynamic(false)
 
-    let minimiumSearchTextLength = 2
-    let apiLatency = 0.5
-    var bookInfo: [BookViewModelMapper] = [BookViewModelMapper]()
-    var searchItem = ""
+    private lazy var bookInfoMapper: [BookViewModelMapper] = []
+    private let minimiumSearchTextLength = 2
+    private let apiLatency = 0.5
+    private var searchValue: String?
     private let useCase: BookUseCaseProtocol
+    private var requestTimer: Timer?
+
     init(useCase: BookUseCaseProtocol) {
         self.useCase = useCase
     }
-}
 
-extension BookListViewModel: BookListInputViewModel, BookListViewModelType  {
     var input: BookListInputViewModel { return self }
-    
-    var getScreenName: String {
-        return "Book Finder"
+    /// Mapper class for list Item Cell
+    var bookInfo: [BookViewModelMapper] {
+        return bookInfoMapper
     }
-    
+
+    // Get Screen Name from constant
+    var getScreenName: String {
+        return ConstantValues.listScreenName
+    }
+
+    /// Get Alert Message: title and subTitle
+    var getAlertMessage: (title: String,
+                          message: String) {
+        return (ConstantValues.alertTitle,
+                ConstantValues.alertMessage)
+    }
+
+    /// fetch Results
+    /// - Parameter searchedTerm: String
     func fetchResults(_ searchedTerm: String) {
         showLoader.value = !showLoader.value
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector:  #selector(fetchResultsFromAPI), object: nil)
-
-        // Check minumum characters for search
+        self.searchValue = searchedTerm
         if searchedTerm.count < minimiumSearchTextLength {
-            self.bookInfo.removeAll()
+            self.bookInfoMapper.removeAll()
             self.reloadTableView()
             self.reloadHintView()
             return
         }
-        searchItem = searchedTerm
-        self.perform(#selector(fetchResultsFromAPI), with:nil, afterDelay: apiLatency)
+        self.requestTimer?.invalidate()
+        self.requestTimer = Timer.scheduledTimer(timeInterval: apiLatency,
+                                                 target: self,
+                                                 selector: #selector(fetchResultsFromAPI),
+                                                 userInfo: nil,
+                                                 repeats: false)
     }
-    
+
+    /// API Call: to fetch books based on search
     @objc private func fetchResultsFromAPI() {
-        self.useCase.fetchBookList(searchItem) { [weak self] result  in
+        guard let searchVal = self.searchValue else {
+            return
+        }
+        self.useCase.fetchBookList(searchVal) { [weak self] result  in
             switch result {
             case let .success(books):
-                if let bookCounts = self?.bookInfo, bookCounts.isEmpty {
-                    self?.reloadHintView()
-                }
-                if let obj = self?.processFetched(books) {
-                    self?.bookInfo = obj
-                }
+                self?.loadData(books)
                 self?.reloadTableView()
             case .failure(_):
                 self?.stopLoaderIndicator()
-                self?.handleFailure()
             }
         }
     }
-    
+
+    func loadData(_ bookInfo: BookInfo) {
+        if self.bookInfoMapper.isEmpty {
+            reloadHintView()
+        }
+        self.bookInfoMapper = processFetched(bookInfo)
+    }
+
+    /// Create a Mapper model for cell item
+    /// - Parameter bookInfo: BookInfo
+    /// - Returns: [BookViewModelMapper]
+    private func processFetched(_ bookInfo: BookInfo) -> [BookViewModelMapper] {
+        return bookInfo.items.map { item in
+            return BookViewModelMapper(title: item.volumeInfo.title,
+                                        subTitle: item.volumeInfo.subtitle ?? "",
+                                        smallImageUrl: item.volumeInfo.imageLinks.smallThumbnail ?? "",
+                                        imageUrl: item.volumeInfo.imageLinks.thumbnail ?? "",
+                                       authors: "",
+                                       publisher: item.volumeInfo.publisher ?? "",
+                                       publishedDate: item.volumeInfo.publishedDate ?? "",
+                                       volumeInfoDescription: item.volumeInfo.volumeInfoDescription ?? ""
+            )
+        }
+    }
+
     private func stopLoaderIndicator() {
         stopLoader.value = !stopLoader.value
     }
     
     private func reloadTableView() {
-        stopLoader.value = !stopLoader.value
+        stopLoaderIndicator()
         loadTable.value = !loadTable.value
     }
     
     private func reloadHintView() {
-        stopLoader.value = !stopLoader.value
+        stopLoaderIndicator()
         showHint.value = !showHint.value
-    }
-    
-    private func processFetched(_ bookInfo: BookInfo) -> [BookViewModelMapper] {
-        var cellViewModel = [BookViewModelMapper]()
-        for item in bookInfo.items {
-            let itemInfo = item.volumeInfo
-            let obj = BookViewModelMapper(title: itemInfo.title,
-                                          subTitle: itemInfo.subtitle ?? "",
-                                          imageUrl: itemInfo.imageLinks.smallThumbnail)
-                cellViewModel.append(obj)
-        }
-        return cellViewModel
     }
 }
 
@@ -114,6 +151,6 @@ extension BookListViewModel: BookListOutputViewModel {
     var output: BookListOutputViewModel { return self }
 
     func handleFailure() {
-        //Handle failure
+        showAlert.value = !showAlert.value
     }
 }

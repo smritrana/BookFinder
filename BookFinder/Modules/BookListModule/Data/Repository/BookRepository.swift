@@ -22,8 +22,7 @@ class BookRepository: BookRepositoryProtocol {
     }
     
     func fetchBookList(_ searchItem: String, completion: @escaping DataResponse) {
-        self.service.fetchBooksFromNetwork(searchItem) {
-            (result: Result<BookDataListDTO, Error>) in
+        self.service.fetchBooksFromNetwork(searchItem) { (result: Result<BookDataListDTO, Error>) in
                 switch result {
                 case .success(let books):
                     completion(.success(books.toDmoain()))

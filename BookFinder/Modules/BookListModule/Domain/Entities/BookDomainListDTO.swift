@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookDomainListDTO  {
+struct BookDomainListDTO {
     let items: [Item]
 }
 
