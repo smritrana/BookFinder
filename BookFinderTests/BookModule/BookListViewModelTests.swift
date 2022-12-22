@@ -31,10 +31,8 @@ class BookListViewModelTests: XCTestCase {
         let waitExpectation = expectation(description: "Waiting")
 
         viewModel.input.fetchResults(searchItemTestValue)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            XCTAssertTrue(self.viewModel.output.bookInfo.count == 2)
-            waitExpectation.fulfill()
-        }
+        XCTAssertTrue(self.viewModel.output.bookInfo.count == 2)
+        waitExpectation.fulfill()
         waitForExpectations(timeout: 1.0)
     }
 
