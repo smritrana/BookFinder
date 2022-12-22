@@ -13,7 +13,7 @@ class BookUseCaseTests: XCTestCase {
     
     var bookUseCase: BookUseCaseProtocol!
     var mockBookRepository: MockBookRepository!
-    
+
     override func setUp() {
         super.setUp()
         mockBookRepository = MockBookRepository()
@@ -30,7 +30,7 @@ class BookUseCaseTests: XCTestCase {
         let expeectation = expectation(description: "Success Case")
         mockBookRepository.bookInfo = MockData.domainBooks
         
-        bookUseCase.fetchBookList(searchItem) { (result: Result<BookInfo, Error>) in
+        bookUseCase.fetchBookList(searchItemTestValue) { (result: Result<BookInfo, Error>) in
             switch result {
             case let .success(books):
                 XCTAssertTrue(books.items.count == 2)
@@ -46,7 +46,7 @@ class BookUseCaseTests: XCTestCase {
         let expectation = expectation(description: "Failure Case")
         mockBookRepository.error = NSError(domain: "Failed_Error", code: 0)
         
-        bookUseCase.fetchBookList(searchItem) { (result: Result<BookInfo, Error>) in
+        bookUseCase.fetchBookList(searchItemTestValue) { (result: Result<BookInfo, Error>) in
             switch result {
             case .success(_):
                 XCTFail("Success not expected")

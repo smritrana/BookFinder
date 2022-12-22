@@ -76,7 +76,6 @@ final class BookListViewModel: BookListViewModelType, BookListInputViewModel {
     /// - Parameter searchedTerm: String
     func fetchResults(_ searchedTerm: String) {
         showLoader.value = !showLoader.value
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector:  #selector(fetchResultsFromAPI), object: nil)
         self.searchValue = searchedTerm
         if searchedTerm.count < minimiumSearchTextLength {
             self.bookInfoMapper.removeAll()
@@ -84,20 +83,7 @@ final class BookListViewModel: BookListViewModelType, BookListInputViewModel {
             self.reloadHintView()
             return
         }
-        self.requestTimer?.invalidate()
-        self.requestTimer = Timer.scheduledTimer(timeInterval: apiLatency,
-                                                 target: self,
-                                                 selector: #selector(fetchResultsFromAPI),
-                                                 userInfo: nil,
-                                                 repeats: false)
-    }
-
-    /// API Call: to fetch books based on search
-    @objc private func fetchResultsFromAPI() {
-        guard let searchVal = self.searchValue else {
-            return
-        }
-        self.useCase.fetchBookList(searchVal) { [weak self] result  in
+        self.useCase.fetchBookList(searchedTerm) { [weak self] result  in
             switch result {
             case let .success(books):
                 self?.loadData(books)
@@ -124,10 +110,10 @@ final class BookListViewModel: BookListViewModelType, BookListInputViewModel {
                                         subTitle: item.volumeInfo.subtitle ?? "",
                                         smallImageUrl: item.volumeInfo.imageLinks.smallThumbnail ?? "",
                                         imageUrl: item.volumeInfo.imageLinks.thumbnail ?? "",
-                                       authors: "",
-                                       publisher: item.volumeInfo.publisher ?? "",
-                                       publishedDate: item.volumeInfo.publishedDate ?? "",
-                                       volumeInfoDescription: item.volumeInfo.volumeInfoDescription ?? ""
+                                        authors: item.volumeInfo.authors.first ?? "",
+                                        publisher: item.volumeInfo.publisher ?? "",
+                                        publishedDate: item.volumeInfo.publishedDate ?? "",
+                                        volumeInfoDescription: item.volumeInfo.volumeInfoDescription ?? ""
             )
         }
     }

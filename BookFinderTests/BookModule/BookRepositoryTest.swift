@@ -13,7 +13,7 @@ class BookRepositoryTest: XCTestCase {
     
     var bookRepository: BookRepositoryProtocol!
     var mockBookService: MockBookService!
-    
+
     override func setUp() {
         super.setUp()
         mockBookService = MockBookService()
@@ -30,7 +30,7 @@ class BookRepositoryTest: XCTestCase {
         let expectation = expectation(description: "Post Repository of Success Case")
         mockBookService.response = MockData.bookInfo
         
-        mockBookService.fetchBooksFromNetwork(searchItem) { (result: Result<BookDataListDTO, Error>) in
+        mockBookService.fetchBooksFromNetwork(searchItemTestValue) { (result: Result<BookDataListDTO, Error>) in
             switch result {
             case let .success(response):
                 if response.items.count > 0 {
@@ -47,7 +47,7 @@ class BookRepositoryTest: XCTestCase {
         let expectation = expectation(description: "Repositoy of Failure Case")
         mockBookService.error = NetworkError.failed
 
-        mockBookService.fetchBooksFromNetwork(searchItem) { (result: Result<BookDataListDTO, Error>) in
+        mockBookService.fetchBooksFromNetwork(searchItemTestValue) { (result: Result<BookDataListDTO, Error>) in
             switch result {
             case .success(_):
                 XCTFail("Success not expected")

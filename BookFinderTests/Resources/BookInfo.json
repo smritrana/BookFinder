@@ -1,22 +1,36 @@
 {
+  "kind": "books#volumes",
+  "totalItems": 3378,
   "items": [
     {
       "volumeInfo": {
-        "title": "Digital Filters",
-        "description": "Introductory text examines role of digital filtering in many applications, particularly computers. Focus on linear signal processing; some consideration of roundoff effects, Kalman filters. Only calculus, some statistics required.",
+        "title": "The Name of the Rose",
+        "authors": [
+          "Umberto Eco"
+        ],
+        "publisher": "Houghton Mifflin Harcourt",
+        "publishedDate": "2014",
+        "description": "In 1327, Brother William of Baskerville is sent to investigate charges of heresy against Franciscan monks at a wealthy Italian abbey but finds his mission overshadowed by seven bizarre murders.",
         "imageLinks": {
-          "smallThumbnail": "http://books.google.com/books/content?id=SWTyj3q_WqUC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-          "thumbnail": "http://books.google.com/books/content?id=SWTyj3q_WqUC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          "smallThumbnail": "http://books.google.com/books/content?id=ChlOAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=ChlOAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
         },
       },
     },
     {
       "volumeInfo": {
-        "title": "Being Digital",
-        "description": "One of the founding fathers of the information age discusses the impact of digital technology on the modern world, discussing such topics as multimedia, the effects of digital transmission on copyright, and virtual reality. 100,000 first printing. $100,000 ad/promo. Tour.",
+        "title": "The Way of the Rose",
+        "subtitle": "The Radical Path of the Divine Feminine Hidden in the Rosary",
+        "authors": [
+          "Clark Strand",
+          "Perdita Finn"
+        ],
+        "publisher": "National Geographic Books",
+        "publishedDate": "2019-11-05",
+        "description": "What happens when a former Zen Buddhist monk and his feminist wife experience an apparition of the Virgin Mary? “This book could not have come at a more auspicious time, and the message is mystical perfection, not to mention a courageous one. I adore this book.”—Caroline Myss, author of Anatomy of the Spirit Before a vision of a mysterious “Lady” invited Clark Strand and Perdita Finn to pray the rosary, they were not only uninterested in becoming Catholic but finished with institutional religion altogether. Their main spiritual concerns were the fate of the planet and the future of their children and grandchildren in an age of ecological collapse. But this Lady barely even referred to the Church and its proscriptions. Instead, she spoke of the miraculous power of the rosary to transform lives and heal the planet, and revealed the secrets she had hidden within the rosary’s prayers and mysteries—secrets of a past age when forests were the only cathedrals and people wove rose garlands for a Mother whose loving presence was as close as the ground beneath their feet. She told Strand and Finn: The rosary is My body, and My body is the body of the world. Your body is one with that body. What cause could there be for fear? Weaving together their own remarkable story of how they came to the rosary, their discoveries about the eco-feminist wisdom at the heart of this ancient devotion, and the life-changing revelations of the Lady herself, the authors reveal an ancestral path—available to everyone, religious or not—that returns us to the powerful healing rhythms of the natural world.",
         "imageLinks": {
-          "smallThumbnail": "http://books.google.com/books/content?id=MPpSAAAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-          "thumbnail": "http://books.google.com/books/content?id=MPpSAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          "smallThumbnail": "http://books.google.com/books/content?id=ZiuPEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=ZiuPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         },
       },
     },

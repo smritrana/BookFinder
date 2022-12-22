@@ -9,11 +9,12 @@ import XCTest
 
 @testable import BookFinder
 
+var searchItemTestValue = "The Rose"
+
 class BookServiceTests: XCTestCase {
 
     var bookService: BookServiceProtocol!
     var mockNetworkManager: MockNetworkManager!
-    private var searchItem = "Digital"
 
     override func setUp() {
         super.setUp()
@@ -30,7 +31,7 @@ class BookServiceTests: XCTestCase {
     func testBookService_Success() {
         let expectation = expectation(description: "Service on Success Case")
         mockNetworkManager.response = MockData.bookInfo
-        bookService.fetchBooksFromNetwork(searchItem) { (result: Result<BookDataListDTO, Error>) in
+        bookService.fetchBooksFromNetwork(searchItemTestValue) { (result: Result<BookDataListDTO, Error>) in
             switch result {
             case let .success(books):
                 if books.items.count > 0 {
@@ -46,7 +47,7 @@ class BookServiceTests: XCTestCase {
     func testBookService_Failure() {
         let expectation = expectation(description: "Service on Failure Case")
         mockNetworkManager.error = NSError(domain: "FailedError", code: 0)
-        bookService.fetchBooksFromNetwork(searchItem) { (result: Result<BookDataListDTO, Error>) in
+        bookService.fetchBooksFromNetwork(searchItemTestValue) { (result: Result<BookDataListDTO, Error>) in
             switch result {
             case .success(_):
                 XCTFail("Success not expected")
