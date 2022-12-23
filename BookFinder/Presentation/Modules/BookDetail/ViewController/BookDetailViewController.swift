@@ -43,7 +43,7 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let type = viewModel.output.checkForValues().cellType
+        let type = viewModel.output.checkForValues()
         let detailInfo = viewModel.output.getSectionType(type[indexPath.row])
         if let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.reuseIdentifier) as? DetailTableViewCell {
             cell.setDataToCell(detailInfo.value)

@@ -34,7 +34,7 @@ protocol BookDetailOutputViewModel {
     var bookInfo: BookViewModelMapper {get}
     func getNumberOfRows() -> Int
     func getSectionType(_ row: DetailCellType) -> (DetailCellType?, value :String)
-    func checkForValues() -> (cellType: [DetailCellType], rowCount: Int)
+    func checkForValues() -> ([DetailCellType])
 }
 
 protocol BookDetailViewModelType {
@@ -86,30 +86,18 @@ final class BookDetailViewModel: BookDetailViewModelType, BookDetailInputViewMod
     /// DescriptiongetNumberOfRows
     /// - Returns: Int
     func getNumberOfRows() -> Int {
-        return checkForValues().rowCount
+        return checkForValues().count
     }
 
     /// Check for Cell type add only that have values
     /// - Returns: DetailCellType, Number of cell to be made
-    func checkForValues() -> (cellType: [DetailCellType],
-                              rowCount: Int) {
-
+    func checkForValues() -> ([DetailCellType]) {
         var getCells = [DetailCellType]()
-        if !bookInfoMapper.title.isEmpty || bookInfoMapper.title != "" {
-            getCells.append(DetailCellType.title)
-        }
-        if !bookInfoMapper.subTitle.isEmpty || bookInfoMapper.subTitle != "" {
-            getCells.append(DetailCellType.subTitle)
-        }
-        if !bookInfoMapper.publisher.isEmpty || bookInfoMapper.publisher != ""{
-            getCells.append(DetailCellType.publisher)
-        }
-        if !bookInfoMapper.publishedDate.isEmpty || bookInfoMapper.publishedDate != "" {
-            getCells.append(DetailCellType.published)
-        }
-        if !bookInfoMapper.volumeInfoDescription.isEmpty || bookInfoMapper.volumeInfoDescription != "" {
-            getCells.append(DetailCellType.volumeInfo)
-        }
-        return (getCells, getCells.count)
+        !bookInfoMapper.subTitle.isBlank ? getCells.append(DetailCellType.title) : ()
+        !bookInfoMapper.subTitle.isBlank ? getCells.append(DetailCellType.subTitle) : ()
+        !bookInfoMapper.publisher.isBlank ? getCells.append(DetailCellType.publisher) : ()
+        !bookInfoMapper.publishedDate.isBlank ? getCells.append(DetailCellType.published) : ()
+        !bookInfoMapper.volumeInfoDescription.isBlank ? getCells.append(DetailCellType.volumeInfo) : ()
+        return getCells
     }
 }
