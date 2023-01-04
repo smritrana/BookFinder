@@ -300,8 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				45C47092296594A200D8F225 /* Container */,
-				458B5AF02952E65200CDD690 /* BookDetail */,
 				455899602949B48700825431 /* BookListModule */,
+				458B5AF02952E65200CDD690 /* BookDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -309,6 +309,8 @@
 		455899602949B48700825431 /* BookListModule */ = {
 			isa = PBXGroup;
 			children = (
+				455899622949B52D00825431 /* Data */,
+				455899612949B52700825431 /* Domain */,
 				45C470932965962E00D8F225 /* Presentation */,
 			);
 			path = BookListModule;
@@ -394,8 +396,6 @@
 		458B5AF02952E65200CDD690 /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
-				455899622949B52D00825431 /* Data */,
-				455899612949B52700825431 /* Domain */,
 				45F5277029536D0700AD947C /* Presentation */,
 			);
 			path = BookDetail;
