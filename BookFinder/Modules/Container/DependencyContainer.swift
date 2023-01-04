@@ -7,18 +7,17 @@
 import Foundation
 import UIKit
 
-class LoadModule {
+class DependencyContainer {
 
     enum Constants {
         static let identifier = "BookListViewController"
         static let identifierDetail = "BookDetailViewController"
     }
-    
-    private let networkManager: NetworkManagerProtocol
-    
-    init(networkManager: NetworkManagerProtocol) {
-        self.networkManager = networkManager
-    }
+
+    private let networkManager: NetworkManagerProtocol = {
+        let networkManager = NetworkManager()
+        return networkManager
+    }()
 
     func generateViewController() -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -46,7 +45,7 @@ class LoadModule {
 }
 
 // Load Detail View Controller
-extension LoadModule {
+extension DependencyContainer {
 
     func generateDetailViewController(_ bookInfo: BookViewModelMapper) -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

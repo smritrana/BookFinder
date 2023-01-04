@@ -16,10 +16,10 @@ class MockBookRepository: BookRepositoryProtocol {
     
     func fetchBookList(_ searchItem: String, completion: @escaping DataResponse) {
         if let error = error {
-            return completion(.failure(error))
+            completion(.failure(error))
         }
         if let bookInfo = bookInfo {
-            return completion(.success(bookInfo))
+            completion(.success(bookInfo))
         }
     }
 }

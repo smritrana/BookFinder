@@ -16,7 +16,6 @@ final class BookListViewController: UIViewController, AlerView {
     
     @IBOutlet weak var loader: UIActivityIndicatorView!
     var viewModel: BookListViewModelType!
-    private let appContainer = LoadContainer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +30,14 @@ final class BookListViewController: UIViewController, AlerView {
     }
     
     func setUpBindingObjects() {
-        viewModel?.output.showLoader.bind {  [unowned self] (_) in
+        viewModel?.output.showLoader.bind {  [unowned self] _ in
             DispatchQueue.main.async {
                 self.loader.startAnimating()
                 self.loader.isHidden = false
             }
         }
         
-        viewModel?.output.stopLoader.bind {  [unowned self] (_) in
+        viewModel?.output.stopLoader.bind {  [unowned self] _ in
             DispatchQueue.main.async {
                 self.loader.stopAnimating()
                 self.loader.isHidden = true
@@ -125,6 +124,6 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        appContainer.showDetailViewController(viewModel.output.bookInfo[indexPath.row])
+        Routing().showDetailViewController(viewModel.output.bookInfo[indexPath.row])
     }
 }

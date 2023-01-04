@@ -14,10 +14,10 @@ class MockBookService: BookServiceProtocol {
     
     func fetchBooksFromNetwork(_ searchItem: String, completion: @escaping (Result<BookDataListDTO, Error>) -> Void) {
         if let error = error {
-            return completion(.failure(error))
+            completion(.failure(error))
         }
         if let response = response {
-            return completion(.success(response))
+            completion(.success(response))
         }
     }
 }

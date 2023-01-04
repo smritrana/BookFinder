@@ -32,7 +32,7 @@ class URLRequestGenerator: URLRequestGeneratorProtocol {
                 urlRequest.setValue(value, forHTTPHeaderField: key)
             })
             
-            return `urlRequest`
+            return urlRequest
         } catch {
             throw error
         }

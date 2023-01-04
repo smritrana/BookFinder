@@ -93,7 +93,7 @@ final class BookDetailViewModel: BookDetailViewModelType, BookDetailInputViewMod
     /// - Returns: DetailCellType, Number of cell to be made
     func checkForValues() -> ([DetailCellType]) {
         var getCells = [DetailCellType]()
-        !bookInfoMapper.subTitle.isBlank ? getCells.append(DetailCellType.title) : ()
+        !bookInfoMapper.title.isBlank ? getCells.append(DetailCellType.title) : ()
         !bookInfoMapper.subTitle.isBlank ? getCells.append(DetailCellType.subTitle) : ()
         !bookInfoMapper.publisher.isBlank ? getCells.append(DetailCellType.publisher) : ()
         !bookInfoMapper.publishedDate.isBlank ? getCells.append(DetailCellType.published) : ()

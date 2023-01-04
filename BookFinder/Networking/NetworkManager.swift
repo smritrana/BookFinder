@@ -30,25 +30,28 @@ class NetworkManager: NetworkManagerProtocol {
     func request<T: Decodable>(request: NetworkRequestProtocol, completion: @escaping Response<T>) {
         
         guard let urlRequest = try? requestGenerator.createURLRequest(using: request) else {
-            return completion(.failure(NetworkError.invalidRequest))
+            completion(.failure(NetworkError.invalidRequest))
+            return
         }
 
         let task = session.dataTask(with: urlRequest) { data, response, error in
 
             if error != nil {
-                return completion(.failure(NetworkError.badRequest))
+                completion(.failure(NetworkError.badRequest))
             }
             
             guard let urlResponse = response as? HTTPURLResponse else {
-                return completion(.failure(NetworkError.noResponse))
+                completion(.failure(NetworkError.noResponse))
+                return
             }
             
             if urlResponse.statusCode != 200 {
-                return completion(.failure(NetworkError.failed))
+                completion(.failure(NetworkError.failed))
             }
             
             guard let data = data else {
-                return completion(.failure(NetworkError.noData))
+                completion(.failure(NetworkError.noData))
+                return
             }
             
             do {
