@@ -19,3 +19,9 @@ struct Configuration {
 struct APIPathUrl {
     static let findBookUrl = "/books/v1/volumes"
 }
+
+struct AccessibilityIdentifier {
+    static let detailsView = "AccessibilityIdentifierDetailsView"
+    static let searchField = "AccessibilityIdentifierSearch"
+    static let listView = "AccessibilityIdentifierListView"
+}

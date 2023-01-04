@@ -25,6 +25,9 @@ final class BookListViewController: UIViewController, AlerView {
         setUpAlertViewController()
         setUpTableView()
         loader.isHidden = true
+
+        view.accessibilityIdentifier = AccessibilityIdentifier.listView
+        searchBar.searchTextField.accessibilityIdentifier = AccessibilityIdentifier.searchField
     }
     
     func setUpBindingObjects() {

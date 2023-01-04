@@ -12,6 +12,7 @@ class DetailTableViewCell: UITableViewCell, ReusableViewNibLoading {
 
     @IBOutlet weak var seprator: UIView!
     @IBOutlet weak var title: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -56,13 +56,12 @@ class BookDeatilViewModelTests: XCTestCase {
 
     func test_getNumberOfRows() {
         let getDetailData = viewModel.output.checkForValues()
-        XCTAssertTrue(viewModel.output.getNumberOfRows() == getDetailData.cellType.count)
+        XCTAssertTrue(viewModel.output.getNumberOfRows() == getDetailData.count)
     }
 
     func test_checkForValues() {
         let getDetailData = viewModel.output.checkForValues()
-        XCTAssertTrue(getDetailData.cellType.count == getDetailData.rowCount)
-        XCTAssertTrue(viewModel.output.getNumberOfRows() == getDetailData.rowCount)
+        XCTAssertTrue(DetailCellType.allCases.count == getDetailData.count)
     }
 
     func test_getSectionType() {

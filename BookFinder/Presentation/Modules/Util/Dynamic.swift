@@ -7,17 +7,13 @@
 
 import Foundation
 
+/// To bind and fire event on value change
 class Dynamic<T>:NSObject {
     typealias Listener = (T) -> Void
     var listener: Listener?
     
     func bind(_ listener: Listener?) {
         self.listener = listener
-    }
-    
-    func bindAndFire(_ listener: Listener?) {
-        self.listener = listener
-        listener?(value)
     }
     
     var value: T {
