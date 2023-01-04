@@ -300,20 +300,20 @@
 			isa = PBXGroup;
 			children = (
 				45C47092296594A200D8F225 /* Container */,
-				455899602949B48700825431 /* BookListModule */,
+				455899602949B48700825431 /* BookList */,
 				458B5AF02952E65200CDD690 /* BookDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		455899602949B48700825431 /* BookListModule */ = {
+		455899602949B48700825431 /* BookList */ = {
 			isa = PBXGroup;
 			children = (
 				455899622949B52D00825431 /* Data */,
 				455899612949B52700825431 /* Domain */,
 				45C470932965962E00D8F225 /* Presentation */,
 			);
-			path = BookListModule;
+			path = BookList;
 			sourceTree = "<group>";
 		};
 		455899612949B52700825431 /* Domain */ = {
